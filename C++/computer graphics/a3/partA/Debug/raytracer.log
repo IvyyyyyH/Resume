@@ -1,0 +1,36 @@
+﻿Build started 2017-12-08 5:29:48 AM.
+     1>Project "C:\Users\Yijia\Downloads\a3\partA\raytracer.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo".\Debug/" /Fd".\Debug/vc140.pdb" /Gd /TP /analyze- /errorReport:prompt bmp_io.cpp light_source.cpp main.cpp raytracer.cpp scene_object.cpp util.cpp
+         bmp_io.cpp
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(152): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(267): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(362): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(512): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(1236): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(1319): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(1443): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(2185): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\yijia\downloads\a3\parta\bmp_io.cpp(2446): warning C4018: '<': signed/unsigned mismatch
+         light_source.cpp
+         main.cpp
+         raytracer.cpp
+     1>c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2811): warning C4996: 'std::_Fill_n': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2797): note: see declaration of 'std::_Fill_n'
+         c:\users\yijia\downloads\a3\parta\raytracer.cpp(218): note: see reference to function template instantiation '_OutIt std::fill_n<unsigned char*,int,int>(_OutIt,_Diff,const _Ty &)' being compiled
+                 with
+                 [
+                     _OutIt=unsigned char *,
+                     _Diff=int,
+                     _Ty=int
+                 ]
+         scene_object.cpp
+     1>c:\users\yijia\downloads\a3\parta\scene_object.cpp(64): error C2601: 'UnitSphere::intersect': local function definitions are illegal
+         c:\users\yijia\downloads\a3\parta\scene_object.cpp(51): note: this line contains a '{' which has not yet been matched
+         util.cpp
+         Generating Code...
+     1>Done Building Project "C:\Users\Yijia\Downloads\a3\partA\raytracer.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.01
