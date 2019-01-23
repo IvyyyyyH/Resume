@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # fixed information
 
 YUHUN_PROP_LIST = [u'御魂序号', u'御魂类型', u'位置', u'攻击',

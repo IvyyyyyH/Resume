@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QPushButton, \
@@ -311,6 +313,7 @@ class Window(QWidget):
                 t = time.time()
                 # remove data in use
                 for name, set in self.ready_sets_dict.items():
+                    print(name + ":" + str(set) + "is in use")
                     for each in set:
                         data.pop(int(each), None)
                 data_loc = get_data_loc(data)
@@ -367,6 +370,7 @@ class Window(QWidget):
                                   self.gongji_check.isChecked(), self.sudu_check.isChecked(),
                                   self.shengming_check.isChecked(), self.dikang_check.isChecked(),
                                   self.mingzhong_check.isChecked()]
+
                 effective_num = 0
                 if self.shuju_request_line.text():
                     effective_num = int(self.shuju_request_line.text())

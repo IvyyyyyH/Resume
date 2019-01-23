@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import os
 import json
 import sys
@@ -229,49 +231,47 @@ def form_all_combs(yuhun_list, type_list):
 			minor_type = yuhun_type
 	main_yuhun = {1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
 	minor_yuhun = {1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
-	other_yuhun = {1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
+	all_yuhun = {1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
 
 	temp_type = []
-	if minor_type in INCREASE_LIST:
-		for name, data in YUHUN_INCREASE.items():
-			if data["加成类型"] == minor_type:
-				temp_type.append(name)
-		minor_type = temp_type
-	else:
-		minor_type = [minor_type]
+	if minor_type is not None:
+		if minor_type in INCREASE_LIST:
+			for name, data in YUHUN_INCREASE.items():
+				if data["加成类型"] == minor_type:
+					temp_type.append(name)
+			minor_type = temp_type
+		else:
+			minor_type = [minor_type]
 
-	other_type = []
+	all_type = []
 	for name, data in YUHUN_INCREASE.items():
-		if name != main_type:
-			other_type.append(name)
+		all_type.append(name)
 
 	for i in range(1, 7):
 		main_yuhun[i] = filter_type(yuhun_list[i], [main_type])
 		if minor_type:
 			minor_yuhun[i] = filter_type(yuhun_list[i], minor_type)
-		other_yuhun[i] = filter_type(yuhun_list[i], other_type)
-
-	total_comb += reduce(lambda x, y: x * y, map(len, main_yuhun.values()))
-	result.append(product(*main_yuhun.values()))
+		all_yuhun[i] = filter_type(yuhun_list[i], all_type)
 
 	# 4+2
+
 	for i in range(1, 7):
 		for j in range(i + 1, 7):
-			temp_yuhun = {x: main_yuhun[x] for x in range(1, 7)}
-			if minor_type:
+			if minor_type is not None:
+				temp_yuhun = {x: main_yuhun[x] for x in range(1, 7)}
 				temp_yuhun[i] = minor_yuhun[i]
 				temp_yuhun[j] = minor_yuhun[j]
 			else:
-				temp_yuhun[i] = other_yuhun[i]
-				temp_yuhun[j] = other_yuhun[j]
+				temp_yuhun = {x: main_yuhun[x] for x in range(1, 7)}
+				temp_yuhun[i] = all_yuhun[i]
+				temp_yuhun[j] = all_yuhun[j]
 			total_comb += reduce(lambda x, y: x * y, map(len, temp_yuhun.values()))
 			result.append(product(*temp_yuhun.values()))
-
 	# 5+1
-	if not minor_type:
+	if minor_type is None:
 		for i in range(1, 7):
-			temp_yuhun = main_yuhun
-			temp_yuhun[i] = other_yuhun[i]
+			temp_yuhun = {x: main_yuhun[x] for x in range(1, 7)}
+			temp_yuhun[i] = all_yuhun[i]
 			total_comb += reduce(lambda x, y: x * y, map(len, temp_yuhun.values()))
 			result.append(product(*temp_yuhun.values()))
 
@@ -363,6 +363,5 @@ def filter_combo(yuhun_combo_list, shishen_info, user_request):
 			memory.append(result["combo"])
 			result_list.append(result)
 	return result_list
-
 
 
